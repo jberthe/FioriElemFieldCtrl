@@ -1,0 +1,45 @@
+<mvc:View controllerName="FieldControl.DemoJBEFieldControl.controller.WithFC" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:html="http://www.w3.org/1999/xhtml" displayBlock="true" xmlns="sap.m" xmlns:smartTable="sap.ui.comp.smarttable"
+	xmlns:smartForm="sap.ui.comp.smartform" xmlns:smartField="sap.ui.comp.smartfield"
+	xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<App id="idAppControl">
+		<pages>
+			<Page title="{i18n>title}">
+				<content>
+					<VBox>
+						<smartTable:SmartTable id="idTable" entitySet="AddressesWithFC" tableType="Table" header="With FC" showRowCount="true"
+							enableAutoBinding="true" customData:useSmartField="true"></smartTable:SmartTable>
+						<smartForm:SmartForm id="idForm" editTogglable="true" title="{ID}">
+							<smartForm:Group label="Address {ID}">
+								<smartForm:GroupElement label="Street">
+									<smartField:SmartField value="{Street}"/>
+								</smartForm:GroupElement>
+								<smartForm:GroupElement label="Number">
+									<smartField:SmartField value="{Number}"/>
+								</smartForm:GroupElement>
+								<smartForm:GroupElement label="City">
+									<smartField:SmartField value="{City}"/>
+								</smartForm:GroupElement>
+							</smartForm:Group>
+						</smartForm:SmartForm>
+					</VBox>
+					<smartTable:SmartTable id="idTable2" entitySet="AddressesWithoutFCSet" tableType="Table" header="FC in Property" showRowCount="true"
+						enableAutoBinding="true" customData:useSmartField="true"></smartTable:SmartTable>
+					<smartForm:SmartForm id="idForm2" editTogglable="true" title="{ID}">
+						<smartForm:Group label="Address {ID}">
+							<smartForm:GroupElement label="Street">
+								<smartField:SmartField value="{Street}"/>
+							</smartForm:GroupElement>
+							<smartForm:GroupElement label="Number">
+								<smartField:SmartField value="{Number}"/>
+							</smartForm:GroupElement>
+							<smartForm:GroupElement label="City">
+								<smartField:SmartField value="{City}"/>
+							</smartForm:GroupElement>
+						</smartForm:Group>
+					</smartForm:SmartForm>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

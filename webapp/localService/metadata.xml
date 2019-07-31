@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema Namespace="ZJBE_DEMO_FIELDCONTROL_SRV" xml:lang="fr" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+			<EntityType Name="AddressWithFC" sap:content-version="1">
+				<Key><PropertyRef Name="ID"/></Key><Property Name="ID" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="City" Type="Edm.String" Nullable="false" sap:field-control="Fc_City" sap:unicode="false" sap:creatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Number" Type="Edm.Int16" sap:field-control="Fc_Number" sap:unicode="false" sap:creatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="Street" Type="Edm.String" sap:field-control="Fc_Street" sap:unicode="false" sap:creatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="Fc_City" Type="Edm.Byte" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Fc_Number" Type="Edm.Byte" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Fc_Street" Type="Edm.Byte" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="AddressWithoutFC" sap:content-version="1">
+				<Key><PropertyRef Name="ID"/></Key><Property Name="ID" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="City" Type="Edm.String" Nullable="false" sap:field-control="to_Property/Fc_City" sap:unicode="false" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Number" Type="Edm.Int16" Nullable="false" sap:field-control="to_Property/Fc_Number" sap:unicode="false"
+					sap:label="Signed INT2 / int16" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Street" Type="Edm.String" Nullable="false" sap:field-control="to_Property/Fc_Street" sap:unicode="false"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><NavigationProperty Name="to_Property" Relationship="ZJBE_DEMO_FIELDCONTROL_SRV.Address_Property" FromRole="FromRole_Address_Property"
+					ToRole="ToRole_Address_Property"/></EntityType>
+			<EntityType Name="Property" sap:content-version="1">
+				<Key><PropertyRef Name="ID"/></Key><Property Name="ID" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="Fc_City" Type="Edm.Byte" Nullable="false" sap:unicode="false" sap:label="int" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Fc_Number" Type="Edm.Byte" Nullable="false" sap:unicode="false" sap:label="int" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Fc_Street" Type="Edm.Byte" Nullable="false" sap:unicode="false" sap:label="int" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<Association Name="Address_Property" sap:content-version="1"><End Type="ZJBE_DEMO_FIELDCONTROL_SRV.AddressWithoutFC" Multiplicity="0..1" Role="FromRole_Address_Property"/><End Type="ZJBE_DEMO_FIELDCONTROL_SRV.Property" Multiplicity="0..1" Role="ToRole_Address_Property"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_Address_Property"><PropertyRef Name="ID"/></Principal>
+					<Dependent Role="ToRole_Address_Property"><PropertyRef Name="ID"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<EntityContainer Name="ZJBE_DEMO_FIELDCONTROL_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="AddressesWithFC" EntityType="ZJBE_DEMO_FIELDCONTROL_SRV.AddressWithFC" sap:pageable="false" sap:content-version="1"/><EntitySet Name="AddressesWithoutFCSet" EntityType="ZJBE_DEMO_FIELDCONTROL_SRV.AddressWithoutFC" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="Properties" EntityType="ZJBE_DEMO_FIELDCONTROL_SRV.Property" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+				<AssociationSet Name="Address_PropertySet" Association="ZJBE_DEMO_FIELDCONTROL_SRV.Address_Property" sap:creatable="false"
+					sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="AddressesWithoutFCSet" Role="FromRole_Address_Property"/><End EntitySet="Properties" Role="ToRole_Address_Property"/></AssociationSet>
+			</EntityContainer><atom:link rel="self"
+				href="https://webidecp-a345b34d2.dispatcher.hana.ondemand.com/destinations/S01-Saphir/sap/opu/odata/sap/ZJBE_DEMO_FIELDCONTROL_SRV/$metadata"
+				xmlns:atom="http://www.w3.org/2005/Atom"/><atom:link rel="latest-version"
+				href="https://webidecp-a345b34d2.dispatcher.hana.ondemand.com/destinations/S01-Saphir/sap/opu/odata/sap/ZJBE_DEMO_FIELDCONTROL_SRV/$metadata"
+				xmlns:atom="http://www.w3.org/2005/Atom"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>
