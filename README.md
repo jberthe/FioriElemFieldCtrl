@@ -15,3 +15,12 @@ Clone the full repository and modify the file *neo-app.json* at this point (near
   "description": "CHANGE_IT"
 }
 ```
+## In SEGW (Back-End side)
+1. Create a project named *ZJBE_DEMO_FIELDCONTROL* 
+2. Import the XML metadata from the repository */ABAP/metadata.xml*
+2.1. Rigth click on *Data Model* folder
+2.2. Import > Data Model from File
+3. Generate the project
+4. Modify/import the both DPC_EXT and MPD_EXT file from */ABAP/*
+5. Register the service into your Front-End 
+At this stage it should normally works :)
