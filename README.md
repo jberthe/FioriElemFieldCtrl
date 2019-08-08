@@ -1,5 +1,5 @@
 # How to use Field Control with Smart Control
-This repository is the full code base of the article posted to SAP SCN.
+This repository is the full code base of the article posted to [SAP SCN](https://blogs.sap.com/2019/08/08/all-you-need-to-know-about-smartfields/).
 The following detail will show you how to use this source code into your project in order to make it working fine :)
 
 ## In SAP WebIDE
